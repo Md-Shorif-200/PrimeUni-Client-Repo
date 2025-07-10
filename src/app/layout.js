@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import AuthProvider from "@/Context/AuthProvider";
 import { Toaster } from "react-hot-toast";
+import QueryProvider from "@/Context/QueryProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,14 +27,18 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         >
     
-
-          {/* context api */}
+          <QueryProvider>
+    {/* context api */}
            <AuthProvider>
         <Navbar></Navbar>
                   {children}
            {/* react hot taost */}
                  <Toaster position="top-right" reverseOrder={false} />
            </AuthProvider>
+
+          </QueryProvider>
+
+      
 
       </body>
     </html>

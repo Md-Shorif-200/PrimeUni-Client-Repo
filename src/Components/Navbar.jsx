@@ -9,7 +9,7 @@ const Navbar = () => {
     // nav links
       const navLinks = <>
                 <li className='mx-3'>  <Link href='/'> Home </Link> </li>
-                <li className='mx-3'>  colleges </li>
+                <li className='mx-3'>   <Link href='/AllCollege'> Colleges </Link> </li>
                 <li className='mx-3'>  admissions </li>
                 <li className='mx-3'>  my college </li>
         </>
@@ -39,16 +39,34 @@ const Navbar = () => {
   </div>
   <div className="navbar-end">
 
-            {user  
+            {
+            user  
             ?
              <>
           {/* dropdown menu */}
                 <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+      <div tabIndex={0} role="button" className="">
         <div className="w-10 rounded-full">
-          <img
+            {
+              user?.photoURL ? 
+              <>
+       <img
             alt="Tailwind CSS Navbar component"
-            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+            src={''}/>
+              </> : 
+              
+              <>
+            
+
+    <div className="bg-neutral text-neutral-content w-[50px] h-[50px] rounded-full flex justify-center  items-center">
+    <span className="text-3xl">  
+                  {user?.displayName.slice(0,1)}
+
+    </span>
+  </div>
+            
+            </>
+            }
         </div>
       </div>
       <ul
