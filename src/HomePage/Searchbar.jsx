@@ -3,7 +3,7 @@ import { IoSearch } from "react-icons/io5";
 
 const Searchbar = () => {
   return (
-    <div className='w-full h-[120px] bg-[#002147] flex justify-center items-center'>
+    <div className='w-full h-[120px] primary_bg_color flex justify-center items-center'>
       <div className="w-[35%] bg-white relative rounded-md">
         <input
           type="search"

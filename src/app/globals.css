@@ -5,3 +5,19 @@
 .common_padding{
   @apply px-4 sm:px-8 md:px-12 lg:px-16
 }
+
+.primary_bg_color {
+  @apply bg-[#002147]
+}
+
+.primary_text_color {
+  @apply text-[#002147]
+}
+
+.primay_btn{
+  @apply btn bg-[#002147] text-white capitalize text-base
+}
+
+.secondary_btn{
+   @apply btn  border-[#002147] text-black hover:bg-[#002147] hover:text-white transition-all ease-in-out capitalize text-base
+}
