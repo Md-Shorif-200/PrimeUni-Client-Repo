@@ -1,14 +1,20 @@
+"use client";
+
+import useAuth from '@/Hooks/useAuth';
+import Link from 'next/link';
 import React from 'react';
 
 const Navbar = () => {
 
     // nav links
       const navLinks = <>
-                <li className='mx-3'>  home </li>
+                <li className='mx-3'>  <Link href='/'> Home </Link> </li>
                 <li className='mx-3'>  colleges </li>
                 <li className='mx-3'>  admissions </li>
                 <li className='mx-3'>  my college </li>
         </>
+
+        const {user,logout} = useAuth()
     return (
      <div className="navbar bg-base-100 shadow-sm common_padding">
   <div className="navbar-start">
@@ -32,10 +38,36 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+
+            {user  
+            ?
+             <>
+          {/* dropdown menu */}
+                <div className="dropdown dropdown-end">
+      <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+        <div className="w-10 rounded-full">
+          <img
+            alt="Tailwind CSS Navbar component"
+            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
+        </div>
+      </div>
+      <ul
+        tabIndex={0}
+        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                <li> <Link   className='text-lg font-semibold py-3'  href={'/'}> Profile</Link> </li>
+                <li>  <button onClick={logout} className='text-lg font-semibold py-3'> Log out </button> </li>
+      </ul>
+    </div>
+             </> 
+             :
+              <>
+                 <Link className='btn btn-primary btn-outline' href='/LogIn'> Log In</Link> 
+                  </>
+              }
   </div>
 </div>
     );
 };
 
 export default Navbar;
+

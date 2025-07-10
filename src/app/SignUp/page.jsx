@@ -1,16 +1,36 @@
 "use client";
+import useAuth from '@/Hooks/useAuth';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 
-const page = () => {
+
+const signUpForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors,isSubmitting },
   } = useForm();
 
-  const onSubmit = (data) => {
+      const {signUp,updateUserProfile} =  useAuth() // context api
+
+
+  const onSubmit = async(data) => {
     console.log('Form Submitted:', data);
+
+      try {
+            const res = await signUp(data.email, data.password);
+             await updateUserProfile(data.name)
+            
+             toast.success('sign up successfully')
+             reset();
+       
+             
+      } catch (error) {
+        console.log(error);
+        
+      }
  
   };
 
@@ -75,7 +95,9 @@ const page = () => {
             type="submit"
             className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
           >
-            Sign Up
+                  {
+                    isSubmitting ? 'Submitting....' : 'Sign Up'
+                  }
           </button>
         </div>
       </form>
@@ -83,4 +105,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default signUpForm;
