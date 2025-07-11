@@ -7,12 +7,13 @@ import Loading from '../loading';
 const Admission = () => {
      const [colleges,refetch,isLoading] = useColleges();
      const [isAdmission,setAdmission] = useState(false);
-     const [admissionId,setAdmissionId] = useState('')
+     const [selectedCollege, setSelectedCollege] = useState(null);
 
 
-     const handleAdmission = (id) => {
+
+     const handleAdmission = (college) => {
            setAdmission(true);
-           setAdmissionId(id)
+           setSelectedCollege(college)
      }
 
     //  loading state
@@ -26,7 +27,7 @@ const Admission = () => {
                      isAdmission ? 
                      
                      <>
-                        <AdmissionFormModal admissionId={admissionId} setAdmission={setAdmission}></AdmissionFormModal>
+                        <AdmissionFormModal selectedCollege={selectedCollege} setAdmission={setAdmission}></AdmissionFormModal>
                      </> :
                      
                      <>
@@ -55,7 +56,7 @@ const Admission = () => {
                         <td> {college.rating} </td>
                         <td> {college.researchCount} </td>
                         <td> {college.admissionDate} </td>
-                        <td>  <button className='secondary_btn btn-sm' onClick={() => handleAdmission(college._id)}> Admission </button> </td>
+                        <td>  <button className='secondary_btn btn-sm' onClick={() => handleAdmission(college)}> Admission </button> </td>
       </tr>
                  )
             })

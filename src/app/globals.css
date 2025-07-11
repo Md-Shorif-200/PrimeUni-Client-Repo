@@ -19,5 +19,5 @@
 }
 
 .secondary_btn{
-   @apply btn  border-[#002147] text-black hover:bg-[#002147] hover:text-white transition-all ease-in-out capitalize text-base
+   @apply btn  border-[#002147] bg-white text-black hover:bg-[#002147] hover:text-white transition-all ease-in-out capitalize text-base
 }

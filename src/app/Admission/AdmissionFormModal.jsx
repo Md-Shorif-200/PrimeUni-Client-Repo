@@ -6,7 +6,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
-const AdmissionFormModal = ({ admissionId, setAdmission }) => {
+const AdmissionFormModal = ({ selectedCollege, setAdmission }) => {
   const {
     register,
     handleSubmit,
@@ -23,11 +23,12 @@ const AdmissionFormModal = ({ admissionId, setAdmission }) => {
                      name: data.name,
                      email : data.email,
                      subject : data.subject,
-                     admissionId : admissionId,
+                     collegeId : selectedCollege._id,
+                     collegeName : selectedCollege.name,
                      address : data.address,
                      phoneNumber : data.phone,
                      userImage : data.image,
-                     admissionDate : new Date()
+                     admitedDate : new Date()
 
                 }
 
