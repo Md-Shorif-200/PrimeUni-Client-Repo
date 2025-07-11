@@ -14,7 +14,7 @@
   @apply text-[#002147]
 }
 
-.primay_btn{
+.primary_btn{
   @apply btn bg-[#002147] text-white capitalize text-base
 }
 

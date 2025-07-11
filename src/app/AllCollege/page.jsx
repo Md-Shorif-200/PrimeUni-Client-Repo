@@ -1,45 +1,62 @@
-'use client'
+'use client';
+import Ratings from '@/Components/Ratings';
 import useColleges from '@/Hooks/useColleges';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
 const AllCollege = () => {
-            const [colleges,refetch] = useColleges();
-            
-     return (
-        <div className=' w-full  college_card common_padding my-10 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3  gap-10'>
-            {
-                colleges.map((college,index) => {
-                      return(
-                         <div key={index} className="card w-full h-auto ">
-                               <Image src={college.image}
-                               width={200}
-                               height={100}
-                               alt='card-image'
-                                className='w-full h-[250px] object-cover'
-                                
-                                ></Image>
+  const [colleges] = useColleges();
 
-                                <div className="card_info shadow-md p-4">
-                                     <h1 className='text-lg sm:text-xl md:text-2xl font-semibold capitalize mt-3 mb-2'> {college.name} </h1>
+  return (
+    <div className="w-full common_padding my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      {colleges.map((college, index) => (
+        <div
+          key={index}
+          className="bg-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1 overflow-hidden"
+        >
+          {/* Image */}
+          <div className="relative w-full h-[220px] sm:h-[250px]">
+            <Image
+              src={college.image}
+              alt={college.name}
+              fill
+              className="object-cover"
+            />
+          </div>
 
-                                     <p> rating : {college.rating} </p>
+          {/* Card Info */}
+          <div className="p-5 space-y-3">
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800 capitalize">
+              {college.name}
+            </h2>
 
-                                     <p className='text-base sm:text-lg font-semibold capitalize'>  Admission  Date : <span className='text-gray-700 font-normal'> {college.admissionDate} </span> </p>
-                                     <p className='text-base sm:text-lg font-semibold capitalize'>   Academic Researches : <span className='text-gray-700 font-normal'> {college.researchCount} </span> </p>
-                                            <div className="card_btn text-end">
-                                                     <Link className='primay_btn btn-sm my-2 ' href=''>See details</Link>
-                                            </div>
+            <Ratings value={college.rating} />
 
-                                </div>
-                         </div>
-                      )
-                }  )
-            }
+            <p className="text-base sm:text-lg text-gray-700">
+              <span className="font-semibold">Admission Date:</span>{' '}
+              {college.admissionDate}
+            </p>
 
+            <p className="text-base sm:text-lg text-gray-700">
+              <span className="font-semibold">Academic Researches:</span>{' '}
+              {college.researchCount}
+            </p>
+
+            {/* Button */}
+            <div className="text-right mt-4">
+              <Link
+                className="primary_btn "
+                href={`/AllCollege/${college._id}`}
+              >
+                See Details
+              </Link>
+            </div>
+          </div>
         </div>
-    );
+      ))}
+    </div>
+  );
 };
 
 export default AllCollege;
