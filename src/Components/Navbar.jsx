@@ -10,8 +10,9 @@ const Navbar = () => {
       const navLinks = <>
                 <li className='mx-3'>  <Link href='/'> Home </Link> </li>
                 <li className='mx-3'>   <Link href='/AllCollege'> Colleges </Link> </li>
-                <li className='mx-3'>  admissions </li>
-                <li className='mx-3'>  my college </li>
+                <li className='mx-3'>  <Link href='/Admission'> Admission</Link> </li>
+                <li className='mx-3'>  <Link href='/MyCollege'> MyCollege</Link> </li>
+             
         </>
 
         const {user,logout} = useAuth()

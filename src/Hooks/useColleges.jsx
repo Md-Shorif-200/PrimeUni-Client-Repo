@@ -6,14 +6,14 @@ import { useQuery } from '@tanstack/react-query';
 const useColleges = () => {
       const axiosSecure = useAxisSecure();
 
-      const {data:colleges=[],refetch} = useQuery({
+      const {data:colleges=[],refetch,isLoading} = useQuery({
          queryKey : ['colleges'],
          queryFn : async () => {
              const  res = await axiosSecure.get('/api/colleges');
              return res.data;
          }
       })
-    return [colleges,refetch]
+    return [colleges,refetch,isLoading]
 };
 
 export default useColleges;
