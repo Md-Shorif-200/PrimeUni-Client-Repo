@@ -4,9 +4,14 @@ import useColleges from '@/Hooks/useColleges';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Loading from '../loading';
 
 const AllCollege = () => {
   const [colleges] = useColleges();
+
+   if (!colleges) {
+      return  <Loading></Loading>;
+    }
 
   return (
     <div className="w-full common_padding my-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
