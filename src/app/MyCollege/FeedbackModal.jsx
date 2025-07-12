@@ -13,6 +13,7 @@ const FeedbackModal = ({ setIsFeedback, admissionData }) => {
 
   const onSubmit = async(data) => {
     const feedbackData = {
+      name : user.displayName,
       email  : user.email,
       college: admissionData.collegeName,
       collegeId : admissionData.collegeId,

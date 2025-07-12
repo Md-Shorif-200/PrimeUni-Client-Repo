@@ -13,7 +13,7 @@ const Ratings = ({value}) => {
         emptySymbol={<AiOutlineStar className="text-yellow-500 text-xl" />}
         fullSymbol={<AiFillStar className="text-yellow-500 text-xl" />}
       />
-      <span className="text-gray-700 text-sm">({value})</span>
+ 
     </div>
     );
 };
