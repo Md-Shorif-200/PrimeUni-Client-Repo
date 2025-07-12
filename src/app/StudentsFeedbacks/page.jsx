@@ -54,7 +54,7 @@ export default function StudentsFeedbacks() {
                       <div>
                         <div className="  flex  items-center gap-3">
                   <img
-                    src={item.profileImg || "https://i.ibb.co/2FsfXqM/default-user.png"}
+                    src={item.image}
                     alt={item.name}
                     className="w-12 h-12 rounded-full object-cover border"
                   />

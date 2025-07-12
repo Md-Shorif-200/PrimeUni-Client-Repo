@@ -15,6 +15,7 @@ const FeedbackModal = ({ setIsFeedback, admissionData }) => {
     const feedbackData = {
       name : user.displayName,
       email  : user.email,
+      image : user.photoURL,
       college: admissionData.collegeName,
       collegeId : admissionData.collegeId,
       rating: rating,
