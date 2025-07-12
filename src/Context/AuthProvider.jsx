@@ -5,8 +5,10 @@ import { app } from '../../firebase.init';
 import {
     createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
+  signInWithPopup,
   signOut,
   updateProfile,
  
@@ -21,6 +23,7 @@ const AuthProvider = ({children}) => {
 
 const [user,setUser] = useState('');
 const axiosSecure = useAxisSecure()
+  const googleProvider = new GoogleAuthProvider();
   console.log(user);
   
 
@@ -69,19 +72,26 @@ const signUp = (email,password)=> {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-//   // google logIn system
+  // google logIn system
 const logout = () => {
    return signOut(auth)
 }
 
 
-//   // update profile 
+  // update profile 
     const updateUserProfile = (name,image) => {
 return updateProfile(auth.currentUser , {
     displayName : name,
     photoURL : image
 })
     }
+
+
+    // google logIn system
+
+  const googleLogIn = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
 
 
 
@@ -96,7 +106,8 @@ const authInfo = {
       signUp,
       updateUserProfile,
       logIn,
-      logout
+      logout,
+      googleLogIn
 }
 
 

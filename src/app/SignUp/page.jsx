@@ -1,8 +1,11 @@
 "use client";
 import useAuth from '@/Hooks/useAuth';
+import Link from 'next/link';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import SocialLogIn from '../SocialLogIn/page';
+import { useRouter } from 'next/navigation';
 
 
 const signUpForm = () => {
@@ -14,6 +17,7 @@ const signUpForm = () => {
   } = useForm();
 
       const {signUp,updateUserProfile} =  useAuth() // context api
+      const  router = useRouter()
 
 
   const onSubmit = async(data) => {
@@ -25,6 +29,7 @@ const signUpForm = () => {
             
              toast.success('sign up successfully')
              reset();
+             router('/')
        
              
       } catch (error) {
@@ -93,7 +98,7 @@ const signUpForm = () => {
         <div>
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded"
+            className="w-full bg-[#002147]  text-white font-semibold py-2 px-4 rounded"
           >
                   {
                     isSubmitting ? 'Submitting....' : 'Sign Up'
@@ -101,6 +106,9 @@ const signUpForm = () => {
           </button>
         </div>
       </form>
+                              <h2 className=' capitalize text-base mt-2 text-end'> Already have an account ? plese <span className='font-semibold'> <Link href='/LogIn'>Log In</Link> </span> </h2>
+                   <p className='text-lg capitalize my-4 text-center'>or</p>
+                    <SocialLogIn></SocialLogIn>
     </div>
   );
 };
