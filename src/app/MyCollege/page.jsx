@@ -7,7 +7,7 @@ import FeedbackModal from './FeedbackModal';
 const MyCollege = () => {
      const [admissions,refetch,isLoading] = useAdmission();
      const {user} = useAuth();
-     const myAdmission = admissions.filter(data => data.email == user.email);
+     const myAdmission = admissions.filter(data => data?.email == user?.email);
      const [isFeedback,setIsFeedback] = useState(false)
      const [admissionData , setAdmissionData] = useState(null)
 

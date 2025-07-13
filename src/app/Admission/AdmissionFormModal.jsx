@@ -83,7 +83,7 @@ const AdmissionFormModal = ({ selectedCollege, setAdmission }) => {
               {...register("name", { required: true })}
               placeholder="Enter candidate name"
               className="input input-bordered w-full"
-              defaultValue={user.displayName}
+              defaultValue={user?.displayName}
             />
             {errors.name && <p className="text-red-500 text-sm">Name is required</p>}
           </div>
@@ -108,7 +108,7 @@ const AdmissionFormModal = ({ selectedCollege, setAdmission }) => {
               placeholder="Enter email"
               type="email"
               className="input input-bordered w-full"
-              defaultValue={user.email}
+              defaultValue={user?.email}
             />
             {errors.email && <p className="text-red-500 text-sm">Email is required</p>}
           </div>
