@@ -4,12 +4,17 @@ import useColleges from '@/Hooks/useColleges';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
+import Loading from '../loading';
 
 const FeaturedCollege = () => {
     const [colleges,refetch] = useColleges();
-    const sortedCollege = [...colleges].sort(((a,b) => b.researchCount - a.researchCount))
+    const sortedCollege =  colleges && colleges.length > 0 ? [...colleges].sort(((a,b) => b.researchCount - a.researchCount)) : [] ;
 
     const feturedCollege = sortedCollege ? sortedCollege.slice(0,3) : [] ;
+
+    if(!colleges){
+      return <Loading></Loading>
+    }
 
     return (
         <div className='featurd_college_section common_padding my-10 '>
