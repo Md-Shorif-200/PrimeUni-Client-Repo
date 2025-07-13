@@ -9,7 +9,7 @@ const FeaturedCollege = () => {
     const [colleges,refetch] = useColleges();
     const sortedCollege = [...colleges].sort(((a,b) => b.researchCount - a.researchCount))
 
-    const feturedCollege = sortedCollege.slice(0,3)
+    const feturedCollege = sortedCollege ? sortedCollege.slice(0,3) : [] ;
 
     return (
         <div className='featurd_college_section common_padding my-10 '>
