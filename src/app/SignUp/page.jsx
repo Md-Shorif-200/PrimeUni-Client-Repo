@@ -29,7 +29,7 @@ const signUpForm = () => {
             
              toast.success('sign up successfully')
              reset();
-             router('/')
+             router.push('/')
        
              
       } catch (error) {
