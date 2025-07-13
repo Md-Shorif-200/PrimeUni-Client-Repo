@@ -9,7 +9,7 @@ import Loading from '../loading';
 const FeaturedCollege = () => {
     const [colleges,refetch] = useColleges();
 
-    
+
      if(!colleges || colleges.length === 0){
   return <Loading></Loading>
 }
@@ -18,13 +18,23 @@ const FeaturedCollege = () => {
 
 
 
- const sortedCollege = [...colleges].sort((a, b) => b.researchCount - a.researchCount);
+ const sortedCollege =  [...colleges].sort((a, b) => b.researchCount - a.researchCount);
  const feturedCollege = sortedCollege.slice(0, 3);
 
 
 
     return (
-        <div className='featurd_college_section common_padding my-10 '>
+
+      <div>
+         {
+           !colleges ? 
+           
+           <>
+            <p>loading......</p>
+           </>
+           : 
+           <>
+             <div className='featurd_college_section common_padding my-10 '>
                 <h1 className='text-xl sm:text-2xl md:text-3xl lg:text-4xl capitalize font-semibold mt-4 mb-8 text-center'>Our Featured College</h1>
                 <div className="featured_college_card grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                      {
@@ -78,6 +88,10 @@ const FeaturedCollege = () => {
                      }
                 </div>
         </div>
+           </>
+         }
+
+       </div>
     );
 };
 
