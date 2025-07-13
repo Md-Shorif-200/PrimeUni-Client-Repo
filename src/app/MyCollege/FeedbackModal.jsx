@@ -13,9 +13,9 @@ const FeedbackModal = ({ setIsFeedback, admissionData }) => {
 
   const onSubmit = async(data) => {
     const feedbackData = {
-      name : user.displayName,
-      email  : user.email,
-      image : user.photoURL,
+      name : user?.displayName,
+      email  : user?.email,
+      image : user?.photoURL,
       college: admissionData.collegeName,
       collegeId : admissionData.collegeId,
       rating: rating,

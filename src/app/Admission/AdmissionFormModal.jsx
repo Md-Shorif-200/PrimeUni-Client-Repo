@@ -59,6 +59,11 @@ const AdmissionFormModal = ({ selectedCollege, setAdmission }) => {
 
   };
 
+  if(!user?.email || !user?.displayName){
+    return <p className="text-center py-20">Loading user data...</p>
+}
+
+
   
 
   return (
