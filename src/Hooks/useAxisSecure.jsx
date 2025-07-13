@@ -4,7 +4,7 @@ import React from 'react';
 
 const useAxisSecure = () => {
                 const axiosSecure = axios.create({
-                      baseURL : 'http://localhost:5000/'
+                      baseURL : 'https://prime-uni-server.vercel.app/'
                 })
 
                 return axiosSecure
